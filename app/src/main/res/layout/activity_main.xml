@@ -59,12 +59,4 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/dropdown_animation"
-android:oneshot="true">
-<item android:drawable="@drawable/add" android:duration="200" />
-<item android:drawable="@drawable/settings" android:duration="200" />
-<!-- Füge weitere Frames hinzu, falls notwendig -->
-</animation-list>
-
 
