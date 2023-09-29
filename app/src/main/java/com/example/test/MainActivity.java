@@ -11,6 +11,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.test.model.AppButton;
+import com.example.test.model.UserButton;
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton dropdownButton;
@@ -22,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
     private RelativeLayout layout;
 
+    private List<UserButton> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        list = new LinkedList<>();
 
         dropdownButton = findViewById(R.id.dropdown_menu);
         addButton = findViewById(R.id.addButton);
@@ -59,6 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void userAdd(){
-
+        list.add(new AppButton("YouTube", null, 500, 500, context));
     }
 }
