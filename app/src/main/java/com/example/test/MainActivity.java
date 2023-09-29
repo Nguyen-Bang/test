@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void userAdd(){
-        list.add(new AppButton("YouTube", null, 500, 500, context));
+        UserButton next = new AppButton("YouTube", null, 500, 500, context);
+        list.add(next);
+        layout.addView(next.getImageButton());
     }
 }

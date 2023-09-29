@@ -87,4 +87,12 @@ public abstract class UserButton {
     public void setH(double h) {
         this.h = h;
     }
+
+    public ImageButton getImageButton() {
+        return imageButton;
+    }
+
+    public void setImageButton(ImageButton imageButton) {
+        this.imageButton = imageButton;
+    }
 }
