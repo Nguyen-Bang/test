@@ -36,8 +36,21 @@ public class MainActivity extends AppCompatActivity {
                     addButton.setVisibility(View.VISIBLE);
                     settingsButton.setVisibility(View.VISIBLE);
                     isDropdownOpen = true;
+
+                    // Starte die Animation
+                    dropdownAnimation.start();
                 }
             }
         });
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userAdd();
+
+            }
+        });
+    }
+    private void userAdd(){
+
     }
 }

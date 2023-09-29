@@ -21,22 +21,24 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:adjustViewBounds="false"
         android:background="@null"
+        android:contentDescription="@string/DropdownDiscription"
         android:scaleType="centerInside"
         android:src="@drawable/dropdown"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/DropdownDiscription" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/addButton"
         android:layout_width="51dp"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/add"
         app:layout_constraintTop_toBottomOf="@id/dropdown_menu"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerInside"
-        android:layout_marginTop="16dp"
         android:visibility="gone"
         android:contentDescription="@string/addDescription" />
 
@@ -44,12 +46,25 @@
         android:id="@+id/settingsButton"
         android:layout_width="51dp"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/settings"
         app:layout_constraintTop_toBottomOf="@id/addButton"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerInside"
-        android:layout_marginTop="16dp"
         android:visibility="gone"
         android:contentDescription="@string/SettingsDiscription" />
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/dropdown_animation"
+android:oneshot="true">
+<item android:drawable="@drawable/add" android:duration="200" />
+<item android:drawable="@drawable/settings" android:duration="200" />
+<!-- Füge weitere Frames hinzu, falls notwendig -->
+</animation-list>
+
+
