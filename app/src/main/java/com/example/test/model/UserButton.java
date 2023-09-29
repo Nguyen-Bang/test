@@ -1,22 +1,25 @@
 package com.example.test.model;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.ImageButton;
 
 import java.util.function.Function;
 
+
 public abstract class UserButton {
 
-    private Function<Void,Void> function;
-    private String image;
+    private Button_Function function;
+    private Bitmap image;
 
     private double x,y;
     private double w,h;
 
-    private Context context;
+    private final Context context;
     private ImageButton imageButton;
 
-    public UserButton(Function<Void, Void> function, String image, double x, double y, double w, double h, Context context) {
+    public UserButton(Button_Function function, Bitmap image, double x, double y, double w, double h, Context context) {
         this.function = function;
         this.image = image;
         this.x = x;
@@ -24,21 +27,32 @@ public abstract class UserButton {
         this.w = w;
         this.h = h;
         this.context = context;
+        imageButton = new ImageButton(context);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                function.execute();
+            }
+        });
+        imageButton.setX((float) x);
+        imageButton.setY((float) y);
+        imageButton.setId(View.generateViewId());
+        imageButton.setImageBitmap(image);
     }
 
-    public Function<Void, Void> getFunction() {
+    public Button_Function getFunction() {
         return function;
     }
 
-    public void setFunction(Function<Void, Void> function) {
+    public void setFunction(Button_Function function) {
         this.function = function;
     }
 
-    public String getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 

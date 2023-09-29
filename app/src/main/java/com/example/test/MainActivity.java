@@ -1,10 +1,15 @@
 package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settingsButton;
 
     private boolean isDropdownOpen = false;
+    private final Context context = this;
+
+    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         dropdownButton = findViewById(R.id.dropdown_menu);
         addButton = findViewById(R.id.addButton);
         settingsButton = findViewById(R.id.settingsButton);
+        layout = findViewById(R.id.layout);
 
         dropdownButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     isDropdownOpen = true;
 
                     // Starte die Animation
-                    dropdownAnimation.start();
+                    //dropdownAnimation.start();
                 }
             }
         });
@@ -46,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 userAdd();
-
             }
         });
     }
