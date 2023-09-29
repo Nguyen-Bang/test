@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isDropdownOpen = false;
     private final Context context = this;
 
-    private RelativeLayout layout;
+    private ConstraintLayout layout;
 
     private List<UserButton> list;
 
