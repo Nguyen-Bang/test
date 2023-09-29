@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +30,7 @@
         android:background="@null"
         android:contentDescription="@string/DropdownDiscription"
         android:scaleType="centerInside"
-        android:src="@drawable/dropdown"
+        android:src="@drawable/dropdown_img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,17 +59,10 @@
         android:scaleType="centerInside"
         android:visibility="gone"
         android:contentDescription="@string/SettingsDiscription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/dropdown_animation"
-android:oneshot="true">
-<item android:drawable="@drawable/add" android:duration="200" />
-<item android:drawable="@drawable/settings" android:duration="200" />
-<!-- Füge weitere Frames hinzu, falls notwendig -->
-</animation-list>
 
 
