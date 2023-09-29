@@ -59,6 +59,35 @@
         android:scaleType="centerInside"
         android:visibility="gone"
         android:contentDescription="@string/SettingsDiscription" />
+
+    <ImageButton
+        android:id="@+id/folderButton"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/folder"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toBottomOf="@id/dropdown_menu"
+        app:layout_constraintStart_toEndOf="@id/addButton"
+        app:layout_constraintBottom_toTopOf="@id/shortcutButton"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/shortcutButton"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/shortcut"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toEndOf="@id/addButton"
+        app:layout_constraintTop_toBottomOf="@id/folderButton"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

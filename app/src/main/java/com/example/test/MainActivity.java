@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton dropdownButton;
     private ImageButton addButton;
     private ImageButton settingsButton;
+    private ImageButton folderButton;
+    private ImageButton shortcutButton;
 
     private boolean isDropdownOpen = false;
+    private boolean areSubButtonsVisible = false;
     private final Context context = this;
 
     private ConstraintLayout layout;
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         dropdownButton = findViewById(R.id.dropdown_menu);
         addButton = findViewById(R.id.addButton);
         settingsButton = findViewById(R.id.settingsButton);
+        folderButton = findViewById(R.id.folderButton);
+        shortcutButton = findViewById(R.id.shortcutButton);
         layout = findViewById(R.id.layout);
 
         dropdownButton.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +67,21 @@ public class MainActivity extends AppCompatActivity {
         });
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                userAdd();
+            public void onClick(View v) {
+                if (areSubButtonsVisible) {
+                    // Schließe die Sub-Buttons
+                    folderButton.setVisibility(View.GONE);
+                    shortcutButton.setVisibility(View.GONE);
+                    areSubButtonsVisible = false;
+                    // Mache den Rest des Bildschirms nicht mehr verschwommen (falls vorher verschwommen)
+                    // Hier musst du Logik hinzufügen, um die Blur-Effekte zu entfernen.
+                } else {
+                    // Öffne die Sub-Buttons
+                    folderButton.setVisibility(View.VISIBLE);
+                    shortcutButton.setVisibility(View.VISIBLE);
+                    areSubButtonsVisible = true;
+                    // Füge hier Logik hinzu, um den Rest des Bildschirms zu verschwimmen.
+                }
             }
         });
     }
