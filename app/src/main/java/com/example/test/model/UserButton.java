@@ -42,7 +42,7 @@ public abstract class UserButton {
         imageButton.setX((float) x);
         imageButton.setY((float) y);
         imageButton.setId(View.generateViewId());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams((int)w, (int)h);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int)w, (int)h);
         imageButton.setLayoutParams(layoutParams);
         if(image != null){
             imageButton.setImageBitmap(image);

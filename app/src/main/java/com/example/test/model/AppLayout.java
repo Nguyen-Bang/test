@@ -35,9 +35,13 @@ public class AppLayout {
         int size = buttons.size();
         for(int i = 0; i < size; i++){
             UserButton button = buttons.get(i);
-            button.setY(i * 110);
-            button.setX(300);
-            layout.updateViewLayout(button.getImageButton(), button.getImageButton().getLayoutParams());
+            moveButton(button, -220 + (i%4 - 1)*110, -110 + i * 110);
         }
+    }
+
+    private void moveButton(UserButton button, int x, int y){
+        button.setY(y);
+        button.setX(x);
+        layout.updateViewLayout(button.getImageButton(), button.getImageButton().getLayoutParams());
     }
 }
