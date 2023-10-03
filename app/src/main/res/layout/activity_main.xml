@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
+
+
+<FrameLayout
+    android:id="@+id/backgroundFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
@@ -89,6 +98,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
 
 
 

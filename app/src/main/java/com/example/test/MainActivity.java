@@ -5,12 +5,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Context;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.test.background.BlurUtils;
 import com.example.test.model.AppButton;
 import com.example.test.model.UserButton;
 
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         list = new LinkedList<>();
 
+        //View frameLayout = findViewById(R.id.backgroundFrameLayout);
+        //BlurUtils.applyBlur(this, frameLayout);
+
         dropdownButton = findViewById(R.id.dropdown_menu);
         addButton = findViewById(R.id.addButton);
         settingsButton = findViewById(R.id.settingsButton);
@@ -59,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class Listener implements View.OnClickListener {
-
+        View frameLayout = findViewById(R.id.backgroundFrameLayout);
+        RenderEffect blurEffect = RenderEffect.createBlurEffect(16, 16 , Shader.TileMode.MIRROR);
         @Override
         public void onClick(View view) {
             if(view == addButton) {
@@ -68,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     folderButton.setVisibility(View.VISIBLE);
                     shortcutButton.setVisibility(View.VISIBLE);
                     // Füge hier Logik hinzu, um den Rest des Bildschirms zu verschwimmen.
+                    //frameLayout.setRenderEffect(blurEffect);
                 } else {
                     folderButton.setVisibility(View.GONE);
                     shortcutButton.setVisibility(View.GONE);
