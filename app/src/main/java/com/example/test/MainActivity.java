@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout layout;
 
     private List<UserButton> list;
+    private Listener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,49 +46,63 @@ public class MainActivity extends AppCompatActivity {
         folderButton = findViewById(R.id.folderButton);
         shortcutButton = findViewById(R.id.shortcutButton);
         layout = findViewById(R.id.layout);
+        listener = new Listener();
 
-        dropdownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isDropdownOpen) {
-                    // Dropdown schließen
-                    addButton.setVisibility(View.GONE);
-                    settingsButton.setVisibility(View.GONE);
-                    isDropdownOpen = false;
-                } else {
-                    // Dropdown öffnen
-                    addButton.setVisibility(View.VISIBLE);
-                    settingsButton.setVisibility(View.VISIBLE);
-                    isDropdownOpen = true;
-
-                    // Starte die Animation
-                    //dropdownAnimation.start();
-                }
-            }
-        });
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (areSubButtonsVisible) {
-                    // Schließe die Sub-Buttons
-                    folderButton.setVisibility(View.GONE);
-                    shortcutButton.setVisibility(View.GONE);
-                    areSubButtonsVisible = false;
-                    // Mache den Rest des Bildschirms nicht mehr verschwommen (falls vorher verschwommen)
-                    // Hier musst du Logik hinzufügen, um die Blur-Effekte zu entfernen.
-                } else {
-                    // Öffne die Sub-Buttons
-                    folderButton.setVisibility(View.VISIBLE);
-                    shortcutButton.setVisibility(View.VISIBLE);
-                    areSubButtonsVisible = true;
-                    // Füge hier Logik hinzu, um den Rest des Bildschirms zu verschwimmen.
-                }
-            }
-        });
+        dropdownButton.setOnClickListener(listener);
+        addButton.setOnClickListener(listener);
+        layout.setOnClickListener(listener);
     }
     private void userAdd(){
         UserButton next = new AppButton("YouTube", null, 500, 500, context);
         list.add(next);
         layout.addView(next.getImageButton());
+    }
+
+    private class Listener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            if(view == addButton) {
+                if (!areSubButtonsVisible) {
+                    // Öffne die Sub-Buttons
+                    folderButton.setVisibility(View.VISIBLE);
+                    shortcutButton.setVisibility(View.VISIBLE);
+                    // Füge hier Logik hinzu, um den Rest des Bildschirms zu verschwimmen.
+                } else {
+                    folderButton.setVisibility(View.GONE);
+                    shortcutButton.setVisibility(View.GONE);
+                    // Mache den Rest des Bildschirms nicht mehr verschwommen (falls vorher verschwommen)
+                    // Hier musst du Logik hinzufügen, um die Blur-Effekte zu entfernen.
+                }
+                areSubButtonsVisible = !areSubButtonsVisible;
+            } else if(view == dropdownButton) {
+                if (!isDropdownOpen) {
+                    // Dropdown öffnen
+                    addButton.setVisibility(View.VISIBLE);
+                    settingsButton.setVisibility(View.VISIBLE);
+                    // Starte die Animation
+                    //dropdownAnimation.start();
+                } else {
+                    addButton.setVisibility(View.GONE);
+                    settingsButton.setVisibility(View.GONE);
+                }
+                isDropdownOpen = !isDropdownOpen;
+            } else {
+                if (areSubButtonsVisible) {
+                    // Schließe die Sub-Buttons
+                    folderButton.setVisibility(View.GONE);
+                    shortcutButton.setVisibility(View.GONE);
+                    // Mache den Rest des Bildschirms nicht mehr verschwommen (falls vorher verschwommen)
+                    // Hier musst du Logik hinzufügen, um die Blur-Effekte zu entfernen.
+                    areSubButtonsVisible = false;
+                }
+                if (isDropdownOpen) {
+                    // Dropdown schließen
+                    addButton.setVisibility(View.GONE);
+                    settingsButton.setVisibility(View.GONE);
+                    isDropdownOpen = false;
+                }
+            }
+        }
     }
 }
