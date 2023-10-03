@@ -4,101 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
-
-<FrameLayout
-    android:id="@+id/backgroundFrameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background"
+            android:contentDescription="@string/background" />
 
-    <ImageButton
-        android:id="@+id/dropdown_menu"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="false"
-        android:background="@null"
-        android:contentDescription="@string/DropdownDiscription"
-        android:scaleType="centerInside"
-        android:src="@drawable/dropdown_img"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/dropdown_menu"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="false"
+            android:background="@null"
+            android:contentDescription="@string/DropdownDiscription"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dropdown_img_new_2"/>
 
-    <ImageButton
-        android:id="@+id/addButton"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/add"
-        app:layout_constraintTop_toBottomOf="@id/dropdown_menu"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        android:contentDescription="@string/addDescription" />
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/dropdown_menu"
+            android:contentDescription="@string/addDescription"
+            android:scaleType="centerInside"
+            android:src="@drawable/add"
+            android:visibility="gone" />
 
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/settings"
-        app:layout_constraintTop_toBottomOf="@id/addButton"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        android:contentDescription="@string/SettingsDiscription" />
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/addButton"
+            android:src="@drawable/settings"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            android:contentDescription="@string/SettingsDiscription" />
 
-    <ImageButton
-        android:id="@+id/folderButton"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/folder"
-        android:scaleType="centerInside"
-        app:layout_constraintTop_toBottomOf="@id/dropdown_menu"
-        app:layout_constraintStart_toEndOf="@id/addButton"
-        app:layout_constraintBottom_toTopOf="@id/shortcutButton"
-        android:visibility="gone" />
+        <ImageButton
+            android:id="@+id/folderButton"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-16dp"
+            android:src="@drawable/folder"
+            android:scaleType="centerInside"
+            android:layout_toEndOf="@id/addButton"
+            android:layout_below="@id/dropdown_menu"
+            android:visibility="gone" />
 
-    <ImageButton
-        android:id="@+id/shortcutButton"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/shortcut"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toEndOf="@id/addButton"
-        app:layout_constraintTop_toBottomOf="@id/folderButton"
-        android:layout_marginBottom="16dp"
-        android:visibility="gone" />
+        <ImageButton
+            android:id="@+id/shortcutButton"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/shortcut"
+            android:scaleType="centerInside"
+            android:layout_toEndOf="@id/addButton"
+            android:layout_below="@id/folderButton"
+            android:visibility="gone" />
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    </RelativeLayout>
 
 
 

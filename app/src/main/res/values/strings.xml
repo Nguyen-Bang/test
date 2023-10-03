@@ -3,4 +3,5 @@
     <string name="addDescription">adds_a_button</string>
     <string name="DropdownDiscription">Dropdownmenu</string>
     <string name="SettingsDiscription">Opens Settings</string>
+    <string name="background">TODO</string>
 </resources>

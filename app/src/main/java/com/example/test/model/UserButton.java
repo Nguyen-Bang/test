@@ -3,7 +3,12 @@ package com.example.test.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.example.test.R;
 
 import java.util.function.Function;
 
@@ -37,7 +42,14 @@ public abstract class UserButton {
         imageButton.setX((float) x);
         imageButton.setY((float) y);
         imageButton.setId(View.generateViewId());
-        imageButton.setImageBitmap(image);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams((int)w, (int)h);
+        imageButton.setLayoutParams(layoutParams);
+        if(image != null){
+            imageButton.setImageBitmap(image);
+        } else {
+            imageButton.setImageResource(R.drawable.shortcut);
+            imageButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        }
     }
 
     public Button_Function getFunction() {
@@ -54,6 +66,7 @@ public abstract class UserButton {
 
     public void setImage(Bitmap image) {
         this.image = image;
+        imageButton.setImageBitmap(image);
     }
 
     public double getX() {
@@ -62,6 +75,13 @@ public abstract class UserButton {
 
     public void setX(double x) {
         this.x = x;
+        if (imageButton.getLayoutParams() instanceof RelativeLayout.LayoutParams){
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageButton.getLayoutParams();
+            layoutParams.leftMargin = (int) x;
+            imageButton.setLayoutParams(layoutParams);
+        } else {
+            imageButton.setX((float) x);
+        }
     }
 
     public double getY() {
@@ -70,6 +90,13 @@ public abstract class UserButton {
 
     public void setY(double y) {
         this.y = y;
+        if (imageButton.getLayoutParams() instanceof RelativeLayout.LayoutParams){
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageButton.getLayoutParams();
+            layoutParams.topMargin = (int) y;
+            imageButton.setLayoutParams(layoutParams);
+        } else {
+            imageButton.setY((float) y);
+        }
     }
 
     public double getW() {
@@ -78,6 +105,9 @@ public abstract class UserButton {
 
     public void setW(double w) {
         this.w = w;
+        ViewGroup.LayoutParams layoutParams = imageButton.getLayoutParams();
+        layoutParams.width = (int) w;
+        imageButton.setLayoutParams(layoutParams);
     }
 
     public double getH() {
@@ -86,6 +116,9 @@ public abstract class UserButton {
 
     public void setH(double h) {
         this.h = h;
+        ViewGroup.LayoutParams layoutParams = imageButton.getLayoutParams();
+        layoutParams.height = (int) h;
+        imageButton.setLayoutParams(layoutParams);
     }
 
     public ImageButton getImageButton() {
