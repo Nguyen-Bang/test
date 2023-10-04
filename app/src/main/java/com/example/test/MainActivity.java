@@ -1,24 +1,19 @@
 package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Context;
 import android.graphics.RenderEffect;
 import android.graphics.Shader;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 
-import com.example.test.background.BlurUtils;
 import com.example.test.model.AppButton;
 import com.example.test.model.AppLayout;
-import com.example.test.model.UserButton;
+import com.example.test.model.FolderButton;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton settingsButton;
     private ImageButton folderButton;
     private ImageButton shortcutButton;
+    private ImageButton homeButton;
     private boolean isDropdownOpen = false;
     private boolean areSubButtonsVisible = false;
     private AppLayout appLayout;
+
+    private AppLayout open;
     private LinkedList<View> toBlur;
 
     @Override
@@ -45,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         settingsButton = findViewById(R.id.settingsButton);
         folderButton = findViewById(R.id.folderButton);
         shortcutButton = findViewById(R.id.shortcutButton);
+        homeButton = findViewById(R.id.homeButton);
         ViewGroup layout = findViewById(R.id.layout);
 
         toBlur = new LinkedList<>();
@@ -55,13 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
         dropdownButton.setOnClickListener(listener);
         addButton.setOnClickListener(listener);
+        homeButton.setOnClickListener(listener);
         layout.setOnClickListener(listener);
+        settingsButton.setOnClickListener(listener);
         shortcutButton.setOnClickListener(listener);
+        folderButton.setOnClickListener(listener);
         appLayout = new AppLayout(context, layout);
+        open = appLayout;
     }
-    private void userAdd(){
-        AppButton button = appLayout.newAppButton();
-        appLayout.addButton(button);
+    private void userAddAppButton(){
+        AppButton button = open.newAppButton();
+        open.addButton(button);
+        toBlur.add(button.getImageButton());
+    }
+
+    private void userAddFolderButton(){
+        FolderButton button = open.newFolderButton();
+        open.addButton(button);
         toBlur.add(button.getImageButton());
     }
 
@@ -119,8 +128,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 isDropdownOpen = !isDropdownOpen;
             } else if (view == shortcutButton) {
-                userAdd();
-            }else {
+                userAddAppButton();
+            } else if (view == folderButton) {
+                userAddFolderButton();
+            } else if (view == homeButton) {
+                open.hide();
+                appLayout.show();
+                open = appLayout;
+            } else if (view == settingsButton) {
+            } else {
                 if (areSubButtonsVisible) {
                     // Schließe die Sub-Buttons
                     folderButton.setVisibility(View.GONE);
@@ -147,5 +163,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void openAppLayout(AppLayout appLayout){
+        this.open.hide();
+        this.open = appLayout;
+        this.open.show();
     }
 }

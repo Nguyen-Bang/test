@@ -32,6 +32,17 @@
             android:src="@drawable/dropdown_img_new_2"/>
 
         <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="51dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/home_btn_2"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:layout_toEndOf="@id/dropdown_menu"/>
+
+        <ImageButton
             android:id="@+id/addButton"
             android:layout_width="51dp"
             android:layout_height="48dp"

@@ -33,12 +33,7 @@ public abstract class UserButton {
         this.h = h;
         this.context = context;
         imageButton = new ImageButton(context);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                function.execute();
-            }
-        });
+        imageButton.setOnClickListener(view -> function.execute());
         imageButton.setX((float) x);
         imageButton.setY((float) y);
         imageButton.setId(View.generateViewId());
@@ -58,6 +53,7 @@ public abstract class UserButton {
 
     public void setFunction(Button_Function function) {
         this.function = function;
+        imageButton.setOnClickListener(view -> function.execute());
     }
 
     public Bitmap getImage() {
