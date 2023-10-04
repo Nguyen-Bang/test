@@ -16,7 +16,7 @@ public class FolderButton extends UserButton{
 
     private final AppLayout folder;
     public FolderButton(String name, Bitmap image, double x, double y, Context context, MainActivity activity, ViewGroup layout) {
-        super(()->{}, image, x, y, size_x, size_y, context);
+        super(()->{}, image, x, y, size_x, size_y, context, layout);
         folder = new AppLayout(context, layout);
         this.setFunction(() -> {
             System.out.println("opening " + name);

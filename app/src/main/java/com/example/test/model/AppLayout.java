@@ -11,6 +11,8 @@ import com.example.test.MainActivity;
 import com.example.test.R;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class AppLayout {
     private final ArrayList<UserButton> buttons;
@@ -33,7 +35,7 @@ public class AppLayout {
     }
 
     public AppButton newAppButton(){
-        return new AppButton("YouTube", null, 500, 500, context);
+        return new AppButton("YouTube", null, 500, 500, context, layout);
     }
 
     public FolderButton newFolderButton(){
@@ -41,6 +43,7 @@ public class AppLayout {
     }
 
     public void updateLayout(){
+        doDelete();
         int size = buttons.size();
         for(int i = 0; i < size; i++){
             UserButton button = buttons.get(i);
@@ -64,5 +67,15 @@ public class AppLayout {
         for(UserButton button:buttons){
             button.getImageButton().setVisibility(View.VISIBLE);
         }
+    }
+
+    public void doDelete(){
+        List<UserButton> toDelete = new LinkedList<>();
+        for(UserButton b:buttons){
+            if(b.isDeleted()){
+                toDelete.add(b);
+            }
+        }
+        buttons.removeAll(toDelete);
     }
 }

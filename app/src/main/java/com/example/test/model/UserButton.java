@@ -20,11 +20,12 @@ public abstract class UserButton {
 
     private double x,y;
     private double w,h;
+    private boolean deleted;
 
     private final Context context;
     private ImageButton imageButton;
 
-    public UserButton(Button_Function function, Bitmap image, double x, double y, double w, double h, Context context) {
+    public UserButton(Button_Function function, Bitmap image, double x, double y, double w, double h, Context context, ViewGroup layout) {
         this.function = function;
         this.image = image;
         this.x = x;
@@ -32,8 +33,18 @@ public abstract class UserButton {
         this.w = w;
         this.h = h;
         this.context = context;
+        deleted = false;
         imageButton = new ImageButton(context);
-        imageButton.setOnClickListener(view -> function.execute());
+        imageButton.setOnClickListener(view ->  {if(!deleted) function.execute();});
+        imageButton.setOnLongClickListener(view -> {
+            deleted = true;
+            try {
+                layout.removeViewInLayout(getImageButton());
+            } catch (Exception e){
+                e.fillInStackTrace();
+            }
+            return true;
+        });
         imageButton.setX((float) x);
         imageButton.setY((float) y);
         imageButton.setId(View.generateViewId());
@@ -123,5 +134,9 @@ public abstract class UserButton {
 
     public void setImageButton(ImageButton imageButton) {
         this.imageButton = imageButton;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 }
